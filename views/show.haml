@@ -1,0 +1,17 @@
+%H1 Question #{q.id}
+
+%p
+  #{q.stem}
+
+- q.choices.each do |ch|
+  %p
+    #{ch.content}
+
+%p
+  Tags:
+  - q.tags.each do |t|
+    • #{t.content}
+
+%p
+  %a{ :href => "/add"}
+    Add a question

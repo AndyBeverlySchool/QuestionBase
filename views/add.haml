@@ -1,0 +1,34 @@
+%H1 Add a question
+
+%form{ :method => 'POST', :action => '/add', :id => 'new_question' }
+  %p
+    Question stem:
+    %br/
+    %textarea{ :name => 'stem', :cols => '100', :rows => '6', :required => true}
+  %p
+    - 4.times do |i|
+      %p
+      Choice #{i+1}:
+      %br/
+      %textarea{ :name => "content_choice#{i}", :cols => '76', :rows => '6', :required => true}
+      True?
+      %input{ :type => 'checkbox', :name => "truth_choice#{i}"}
+  %p
+    Question Feedback:
+    %br/
+    %textarea{ :name => "feedback", :cols => '76', :rows => '6', :required => true}
+  %p
+    Comments:
+    %br/
+    %textarea{ :name => "comment", :cols => '76', :rows => '6', :required => true}
+      Created question...
+  %p
+    Author:
+    %br/
+    %input{ :type => 'text', :name => "author", :cols => '76', :rows => '6', :value => 'admin', :required => true}
+  %p
+    Tags (comma separated):
+    %br/
+    %input{ :type => 'text', :name => 'tags', :required => true}
+  %p
+    %input{ :type => 'submit'}

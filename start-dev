@@ -1,0 +1,2 @@
+bundle install
+rerun 'ruby qb.rb'

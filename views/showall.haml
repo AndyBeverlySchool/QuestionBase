@@ -1,0 +1,17 @@
+%link{:rel => :stylesheet, :type => :"text/css", :href => url("/styles.css")}
+- if q_to_delete
+  %div{ :id => 'delete', :class => 'modals' }
+    %div.popbox
+      - if q_to_delete
+        %span.bold Do you want to delete Question #{q_to_delete.id}?
+        %p
+          Question to be deleted:
+          %span.italic "#{q_to_delete.stem}"
+          %form{ :method => "post", :action => "##{q_to_delete.id}"}
+            %input{ :type => "submit", :value => "No, don't!"}
+          %form{ :method => "post", :action => "#{q_to_delete.id}"}
+            %input{ :type => "hidden", :name => "_method", :value => "DELETE"}
+            %input{ :type => "submit", :value => "Delete Question #{q_to_delete.id}"}
+- qs.each do |q|
+
+  = haml :show, :locals => {:q => q}

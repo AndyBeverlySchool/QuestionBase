@@ -10,6 +10,10 @@ get '/' do
   "Hello."
 end
 
+delete '/:id' do
+  haml "todo -> implement deleting records."
+end
+
 get '/show/:id' do
   q = Question.get(params["id"])
   if (q) then
@@ -17,6 +21,24 @@ get '/show/:id' do
   else
     haml "%H1 No data found"
   end
+end
+
+get '/showall' do
+  qs = Question.all
+  q_to_delete = Question.get(params[:q_to_delete])
+  if (qs) then
+    haml :showall, :locals => {:qs => qs, :q_to_delete => q_to_delete}
+  else
+    haml "%H1 Not data found"
+  end
+end
+
+post '/showall' do
+  redirect '/showall'
+end
+
+get '/edit/:id' do
+  haml "todo -> implement editing"
 end
 
 get '/add' do
